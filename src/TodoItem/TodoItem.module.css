@@ -1,0 +1,129 @@
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+
+/* .todo.completed {
+  text-decoration: line-through;
+  color: red;
+  background-color: royalblue;
+} */
+
+/* .completed {
+  text-decoration: line-through;
+  color: red;
+  background-color: royalblue;
+} */
+
+.title {
+  font-family: "Alegreya Sans", sans-serif;
+  border-bottom: 2px solid #506860;
+  align-self: flex-end;
+  width: 70%;
+  word-wrap: break-word;
+}
+
+.checkbox input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  margin: 10px 0 0 20px;
+}
+
+.doneWrapper {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-right: auto;
+}
+.checkboxDone,
+.checkboxImportant {
+  position: relative;
+  cursor: pointer;
+}
+.checkboxDone:before {
+  content: "";
+
+  position: absolute;
+  top: 2px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #506860;
+  transition: 0.2s;
+}
+
+.checkbox input:checked + .checkboxDone:before {
+  background: #506860;
+}
+.checkbox input:checked + .checkboxDone:after {
+  content: "";
+
+  position: absolute;
+  top: 9px;
+  left: 6px;
+  width: 22px;
+  height: 22px;
+  background: url(./../img/checkDone.svg) no-repeat center;
+  transition: 0.2s;
+}
+
+.iconsWrapper {
+  margin-left: auto;
+  width: 75px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkboxImportant:before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: url(./../img/starEmpty.svg) no-repeat center;
+
+  transition: 0.2s;
+}
+
+.checkbox input:checked + .checkboxImportant:before {
+  background: url(./../img/starFull.svg) no-repeat center;
+}
+
+.delete {
+  margin-right: 5px;
+  background: url(./../img/cross.svg) no-repeat center;
+  width: 27px;
+  height: 27px;
+  opacity: 0.5;
+  transition: 0.2s;
+}
+
+.delete:hover {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+@media (max-width: 410px) {
+  .todo {
+    width: 90%;
+  }
+  .title {
+    width: 60%;
+  }
+}
