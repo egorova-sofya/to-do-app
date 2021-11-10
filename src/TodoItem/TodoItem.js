@@ -4,18 +4,11 @@ import s from "./TodoItem.module.css";
 export default function TodoItem({ title, id, completed, important }) {
   const { dispatch } = useContext(Context);
 
-  const cls = [];
-
-  if (completed) {
-    cls.push("completed");
-  }
-
-  // if (important) {
-  //   cls.push("important");
-  // }
+  const completedClass = completed ? s.completed : "";
+  const importantClass = important ? s.important : "";
 
   return (
-    <li className={`${s.todo} ${cls.join(" ")} `}>
+    <li className={`${s.todo} ${completedClass} ${importantClass}`}>
       <div className={s.doneWrapper}>
         <label className={s.checkbox}>
           <span className={s.visuallyHidden}>Done</span>

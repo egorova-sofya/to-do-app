@@ -17,7 +17,7 @@ export default function App() {
   }, [state]);
 
   const addTodo = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && todoTitle.length > 0) {
       dispatch({
         type: "add",
         payload: todoTitle,
@@ -26,12 +26,14 @@ export default function App() {
     }
   };
 
-  const addTodoBtn = (event) => {
-    dispatch({
-      type: "add",
-      payload: todoTitle,
-    });
-    setTodotitle("");
+  const addTodoBtn = () => {
+    if (todoTitle.length > 0) {
+      dispatch({
+        type: "add",
+        payload: todoTitle,
+      });
+      setTodotitle("");
+    }
   };
 
   return (
@@ -42,7 +44,7 @@ export default function App() {
 
           <div className="input-wrapper">
             <input
-              className="input-field"
+              className="input-field "
               type="text"
               value={todoTitle}
               onChange={(event) => {
