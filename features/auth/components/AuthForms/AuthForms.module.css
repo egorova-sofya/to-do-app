@@ -1,0 +1,201 @@
+.authContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* background-color: var(--blue); */
+}
+
+.authTitle {
+  color: var(--white);
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 0.15px;
+  position: absolute;
+  top: 28px;
+  left: 28px;
+}
+
+.authContainerBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  width: 55%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  filter: blur(150px);
+  mix-blend-mode: overlay;
+  animation-duration: 40s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.circle1 {
+  top: -30%;
+  left: -20%;
+  background-color: var(--blue);
+  animation-name: moveCircle1;
+}
+
+.circle2 {
+  top: -30%;
+  left: 25%;
+  background-color: var(--violet);
+  animation-name: moveCircle2;
+}
+
+.circle3 {
+  top: -30%;
+  left: 70%;
+  background-color: var(--red);
+  animation-name: moveCircle3;
+}
+
+.circle4 {
+  bottom: -30%;
+  right: -25%;
+  background-color: var(--blue);
+  animation-name: moveCircle4;
+}
+
+.circle5 {
+  bottom: -30%;
+  right: 25%;
+  background-color: var(--violet);
+  animation-name: moveCircle5;
+}
+
+.circle6 {
+  bottom: -30%;
+  right: 70%;
+  background-color: var(--red);
+  animation-name: moveCircle6;
+}
+
+@keyframes moveCircle1 {
+  0% {
+    left: -25%;
+  }
+  50% {
+    left: 70%;
+  }
+  100% {
+    left: -25%;
+  }
+}
+
+@keyframes moveCircle2 {
+  0% {
+    left: 25%;
+  }
+  50% {
+    left: -20%;
+  }
+  100% {
+    left: 25%;
+  }
+}
+
+@keyframes moveCircle3 {
+  0% {
+    left: 70%;
+  }
+  50% {
+    left: 25%;
+  }
+  100% {
+    left: 70%;
+  }
+}
+
+@keyframes moveCircle4 {
+  0% {
+    right: -25%;
+  }
+  50% {
+    right: 70%;
+  }
+  100% {
+    right: -25%;
+  }
+}
+
+@keyframes moveCircle5 {
+  0% {
+    right: 25%;
+  }
+  50% {
+    right: -20%;
+  }
+  100% {
+    right: 25%;
+  }
+}
+
+@keyframes moveCircle6 {
+  0% {
+    right: 70%;
+  }
+  50% {
+    right: 25%;
+  }
+  100% {
+    right: 70%;
+  }
+}
+
+.authForm {
+  margin: auto;
+  max-width: 500px;
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px var(--padding-left-right);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.25) 0.97%,
+    rgba(255, 255, 255, 0.03) 102.62%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--primary-shadow-large);
+  backdrop-filter: blur(12px);
+  mix-blend-mode: overlay;
+}
+
+/* .inputsWrapper {
+  mix-blend-mode: overlay;
+} */
+
+/* .authForm::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./../../../../public/images/bg.png");
+  opacity: 0.1;
+  border-radius: var(--border-radius-large);
+} */
+
+.authActionTitle {
+  opacity: 0.7;
+  mix-blend-mode: overlay;
+  color: var(--white);
+  font-size: 66px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 52px;
+}

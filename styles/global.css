@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap");
+
+:root {
+  --font-primary: "Roboto", sans-serif;
+  --container-width: 660px;
+
+  --blue: #1cdce8;
+  --violet: #bb77ed;
+  --red: #f34a62;
+  --black: #161719;
+  --white: #ffffff;
+
+  --primary-color: var(--black);
+  --accent-color: var(--violet);
+  --error-color: var(--red);
+
+  --padding-left-right: 44px;
+
+  --border-radius-large: 40px;
+  --border-radius-small: 13px;
+
+  --primary-shadow-medium: 0px 4px 24px 4px rgba(0, 0, 0, 0.1);
+  --primary-shadow-large: 0px 4px 24px 4px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--white);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--primary-color);
+  min-width: calc(var(--container-width) + 2 * var(--container-padding));
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 13px;
+}
+
+.MuiOutlinedInput-root {
+  background-color: var(--white) !important;
+  border-radius: var(--border-radius-small) !important;
+}
+
+.MuiOutlinedInput-root {
+  background-color: var(--white) !important;
+}
