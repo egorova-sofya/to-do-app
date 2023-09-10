@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./AuthForms.module.css";
 import RegisterForm from "./RegisterForm";
 import cn from "classnames";
+import LoginForm from "./LoginForm";
 
 const AuthForms = () => {
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
+
   return (
     <div className={s.authContainer}>
       <h1 className={s.authTitle}>To-Do app</h1>
-      <RegisterForm />
+      {authMode === "login" ? (
+        <LoginForm setAuthMode={() => setAuthMode("register")} />
+      ) : (
+        <RegisterForm setAuthMode={() => setAuthMode("login")} />
+      )}
       <div className={s.authContainerBg}>
         <div className={cn(s.circle, s.circle1)}></div>
         <div className={cn(s.circle, s.circle2)}></div>

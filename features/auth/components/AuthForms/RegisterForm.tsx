@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FC, FormEvent, useState } from "react";
 import { getAuth, updateProfile, User, UserCredential } from "firebase/auth";
 import Button from "../../../../components/Button/Button";
 import TextField from "@mui/material/TextField";
@@ -13,6 +13,7 @@ import { useAuthContext } from "../../AuthContextProvider";
 import { Typography } from "@mui/material";
 import s from "./AuthForms.module.css";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export type InputName = "login" | "email" | "password" | "confirmPassword";
 
@@ -39,7 +40,7 @@ const schema: ValidationSchema = {
   },
 };
 
-const RegisterForm = () => {
+const RegisterForm: FC<{ setAuthMode: () => void }> = ({ setAuthMode }) => {
   const [inputValues, setInputValues] = useState({
     login: "",
     email: "",
@@ -113,7 +114,7 @@ const RegisterForm = () => {
   return (
     <>
       <form className={s.authForm} noValidate onSubmit={onSubmit}>
-        <p className={s.authActionTitle}>Sign In</p>
+        <p className={s.authActionTitle}>Sign Up</p>
         <Box
           sx={{ display: "flex", flexDirection: "column" }}
           className={s.inputsWrapper}
@@ -181,7 +182,14 @@ const RegisterForm = () => {
               </span>
             ) : null} */}
           </Box>
-          <Button style={{ mixBlendMode: "normal" }}>Sign Up</Button>
+          <Button>Sign Up</Button>
+
+          <Box className={s.changeAuthModeBtnWrapper}>
+            Already have an account?{" "}
+            <button className={s.changeAuthModeBtn} onClick={setAuthMode}>
+              Sign In
+            </button>
+          </Box>
         </Box>
       </form>
     </>

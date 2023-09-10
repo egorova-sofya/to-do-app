@@ -12,6 +12,7 @@ import { UserCredential } from "firebase/auth";
 import { Typography } from "@mui/material";
 import { useAuthContext } from "../../AuthContextProvider";
 import { redirect } from "next/navigation";
+import s from "./AuthForms.module.css";
 
 export type InputName = "email" | "password";
 
@@ -24,7 +25,7 @@ const schema: ValidationSchema = {
   },
 };
 
-const LoginForm: FC = () => {
+const LoginForm: FC<{ setAuthMode: () => void }> = ({ setAuthMode }) => {
   const [inputValues, setInputValues] = useState({ email: "", password: "" });
   const [authError, setAuthError] = useState("");
   const { loginWithEmailAndPassword } = useAuthContext();
@@ -79,7 +80,8 @@ const LoginForm: FC = () => {
 
   return (
     <>
-      <form noValidate onSubmit={onSubmit}>
+      <form className={s.authForm} noValidate onSubmit={onSubmit}>
+        <p className={s.authActionTitle}>Sign In</p>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           {authError && (
             <Typography variant="subtitle2" color="error" sx={{ m: 2 }}>
@@ -117,6 +119,13 @@ const LoginForm: FC = () => {
             ) : null}
           </Box>
           <Button>Login</Button>
+
+          <Box className={s.changeAuthModeBtnWrapper}>
+            Don&apos;t have an account yet?
+            <button className={s.changeAuthModeBtn} onClick={setAuthMode}>
+              Sign Up
+            </button>
+          </Box>
         </Box>
       </form>
     </>
