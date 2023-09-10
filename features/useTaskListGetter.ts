@@ -1,4 +1,3 @@
-import { ITodoItem } from "./../types";
 import {
   collection,
   getDocs,
@@ -7,6 +6,7 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthContext } from "./auth/AuthContextProvider";
+import { ITodoItem } from "@/app/types";
 
 export const useTaskListGetter = (): ITodoItem[] | null => {
   const [todoList, setTodoList] = useState<ITodoItem[] | null>(null);
@@ -18,16 +18,14 @@ export const useTaskListGetter = (): ITodoItem[] | null => {
     const todoData: ITodoItem[] = [];
 
     try {
-      const querySnapshot = await getDocs(collection(db, `users${user.uid}`));
-
-      querySnapshot.forEach((doc) => {
-        const data = doc.data() as Omit<ITodoItem, "id">;
-
-        todoData.push({
-          id: doc.id,
-          ...data,
-        });
-      });
+      // const querySnapshot = await getDocs(collection(db, `users${user.uid}`));
+      // querySnapshot.forEach((doc) => {
+      //   const data = doc.data() as Omit<ITodoItem, "id">;
+      //   todoData.push({
+      //     id: doc.id,
+      //     ...data,
+      //   });
+      // });
     } catch (error) {
       return Promise.reject(error);
     }
@@ -45,19 +43,17 @@ export const useTaskListGetter = (): ITodoItem[] | null => {
   const db = getFirestore();
 
   useEffect(() => {
-    onSnapshot(collection(db, `users${user.uid}`), (snapshot) => {
-      const todoData: ITodoItem[] = [];
-
-      snapshot.forEach(function (doc) {
-        const data = doc.data() as Omit<ITodoItem, "id">;
-        todoData.push({
-          id: doc.id,
-          ...data,
-        });
-      });
-
-      setTodoList(todoData);
-    });
+    // onSnapshot(collection(db, `users${user.uid}`), (snapshot) => {
+    //   const todoData: ITodoItem[] = [];
+    //   snapshot.forEach(function (doc) {
+    //     const data = doc.data() as Omit<ITodoItem, "id">;
+    //     todoData.push({
+    //       id: doc.id,
+    //       ...data,
+    //     });
+    //   });
+    //   setTodoList(todoData);
+    // });
   }, []);
 
   return todoList;
