@@ -4,7 +4,7 @@ import { CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
 import { useTaskListGetter } from "../../features/useTaskListGetter";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const TodoList = () => {
   const todoList = useTaskListGetter();
@@ -27,7 +27,7 @@ const TodoList = () => {
           justifyContent: "center",
         }}
       >
-        <Link to="/new-todo">
+        <Link href="/new-todo">
           <AddCircleOutlineIcon
             sx={{ opacity: 0.2, width: 150, height: 150 }}
           />

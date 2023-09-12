@@ -8,6 +8,7 @@ import UploadImageModal from "../UploadImageModal/UploadImageModal";
 import { useTaskListGetter } from "@/features/useTaskListGetter";
 import { useAuthContext } from "@/features/auth/AuthContextProvider";
 import cn from "classnames";
+import Header from "../Header/Header";
 
 export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   const { user } = useAuthContext();
@@ -24,27 +25,7 @@ export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
           <div className={cn(s.circle, s.circle2)}></div>
           <div className={cn(s.circle, s.circle3)}></div>
         </div>
-
-        <div>
-          <Typography variant="h4" component="p" sx={{ fontWeight: 700 }}>
-            {/* Hi, {user.displayName} */}
-            Hi, Sofia
-          </Typography>
-          <Typography variant="body2" component="p">
-            {/* You have {`${todoList?.length} ${taskWord}`} for today */}
-            It&apos;s time to add new tasks!
-          </Typography>
-        </div>
-
-        <Box sx={{ maxWidth: 60 }}>
-          {/* <UploadImageModal>
-                <Avatar
-                  alt={`${user.displayName}'s profile photo`}
-                  src={user.photoURL}
-                  sx={{ width: 50, height: 50 }}
-                />
-              </UploadImageModal> */}
-        </Box>
+        <Header />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           {children}
         </Box>

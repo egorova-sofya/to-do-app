@@ -1,7 +1,4 @@
 .layoutContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
 }
 
@@ -16,7 +13,7 @@
 }
 
 .circle {
-  width: 55%;
+  width: 45%;
   aspect-ratio: 1/1;
   position: absolute;
   border-radius: 50%;
@@ -42,7 +39,7 @@
 
 .circle3 {
   bottom: -40%;
-  left: 20%;
+  left: 10%;
   background-color: var(--blue);
 }
 
