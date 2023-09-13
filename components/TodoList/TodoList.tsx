@@ -1,10 +1,13 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Fab } from "@mui/material";
 import { Box } from "@mui/system";
 import { useTaskListGetter } from "../../features/useTaskListGetter";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import SentimentVeryDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentVeryDissatisfiedOutlined";
 import Link from "next/link";
+import AddIcon from "@mui/icons-material/Add";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { BlockLayout } from "../Layout/BlockLayout";
 
 const TodoList = () => {
   const todoList = useTaskListGetter();
@@ -17,30 +20,50 @@ const TodoList = () => {
     );
   }
 
-  if (todoList.length === 0) {
-    return (
-      <Box
-        sx={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+  return (
+    <>
+      <BlockLayout>
+        {todoList.length === 0 && (
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              gap: "28px",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "24px",
+                color: "var(--violet)",
+              }}
+            >
+              No tasks loaded
+            </p>
+            <SentimentVeryDissatisfiedOutlinedIcon
+              sx={{ width: 150, height: 150, color: "var(--violet)" }}
+            />
+          </Box>
+        )}
+        {todoList.map((item) => (
+          <TodoItem key={item.id} item={item} />
+        ))}
+      </BlockLayout>
+
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Link href="/new-todo">
-          <AddCircleOutlineIcon
-            sx={{ opacity: 0.2, width: 150, height: 150 }}
-          />
+          <Fab
+            color="primary"
+            aria-label="add"
+            style={{ width: "106px", height: "106px" }}
+          >
+            <AddOutlinedIcon sx={{ fontSize: "58px" }} />
+          </Fab>
         </Link>
       </Box>
-    );
-  }
-  return (
-    <div className="container">
-      {todoList.map((item) => (
-        <TodoItem key={item.id} item={item} />
-      ))}
-    </div>
+    </>
   );
 };
 
