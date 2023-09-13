@@ -3,6 +3,7 @@ import s from "./Header.module.css";
 import {
   Avatar,
   Box,
+  Button,
   Divider,
   IconButton,
   ListItemIcon,
@@ -38,28 +39,8 @@ const Header = () => {
         </Typography>
       </div>
 
-      <Box className={s.avatarWrapper}>
-        {/* <UploadImageModal> */}
-        <Avatar
-          // alt={`${user.displayName}'s profile photo`}
-          // src={user.photoURL}
-          className={s.avatar}
-          src="/images/temporary-avatar.png"
-          sx={{ width: 100, height: 100 }}
-        />
-        {/* </UploadImageModal> */}
-      </Box>
-
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      >
-        <Tooltip title="Account settings">
+      <div>
+        <Box className={s.avatarWrapper}>
           <IconButton
             onClick={handleClick}
             size="small"
@@ -68,30 +49,29 @@ const Header = () => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 100, height: 100 }}>Mmmmmmmmmmmmmmmm</Avatar>
+            <Avatar
+              // alt={`${user.displayName}'s profile photo`}
+              // src={user.photoURL}
+              className={s.avatar}
+              src="/images/temporary-avatar.png"
+              sx={{ width: 100, height: 100 }}
+            />
           </IconButton>
-        </Tooltip>
+        </Box>
 
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-      </Menu>
+        <Menu
+          id="demo-positioned-menu"
+          aria-labelledby="demo-positioned-button"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={handleClose}>
+            <UploadImageModal>Update avatar</UploadImageModal>
+          </MenuItem>
+        </Menu>
+      </div>
     </header>
   );
 };
