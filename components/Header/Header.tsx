@@ -39,39 +39,36 @@ const Header = () => {
         </Typography>
       </div>
 
-      <div>
-        <Box className={s.avatarWrapper}>
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? "account-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-          >
-            <Avatar
-              // alt={`${user.displayName}'s profile photo`}
-              // src={user.photoURL}
-              className={s.avatar}
-              src="/images/temporary-avatar.png"
-              sx={{ width: 100, height: 100 }}
-            />
-          </IconButton>
-        </Box>
-
-        <Menu
-          id="demo-positioned-menu"
-          aria-labelledby="demo-positioned-button"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
+      <Box className={s.avatarWrapper}>
+        <IconButton
+          onClick={handleClick}
+          size="small"
+          aria-controls={open ? "account-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
         >
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
-          <MenuItem onClick={handleClose}>
-            <UploadImageModal>Update avatar</UploadImageModal>
-          </MenuItem>
-        </Menu>
-      </div>
+          <Avatar
+            // alt={`${user.displayName}'s profile photo`}
+            // src={user.photoURL}
+            className={s.avatar}
+            src="/images/temporary-avatar.png"
+            sx={{ width: 70, height: 70 }}
+          />
+        </IconButton>
+      </Box>
+
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}>
+          <UploadImageModal>Update avatar</UploadImageModal>
+        </MenuItem>
+      </Menu>
     </header>
   );
 };

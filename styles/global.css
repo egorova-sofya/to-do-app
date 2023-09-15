@@ -15,6 +15,7 @@
   --error-color: var(--red);
 
   --padding-left-right: 44px;
+  --max-container-width: 660px;
 
   --border-radius-large: 40px;
   --border-radius-small: 13px;
